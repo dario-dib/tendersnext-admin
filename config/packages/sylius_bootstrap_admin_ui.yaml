@@ -1,0 +1,30 @@
+imports:
+    - { resource: '@SyliusBootstrapAdminUiBundle/config/app.php' }
+# config/packages/sylius_bootstrap_admin_ui.yaml
+# ...
+sylius_twig_hooks:
+    hooks:
+        # ...
+        # Disabling Symfony UX stylesheets
+        'sylius_admin.base#stylesheets':
+            symfony_ux:
+                enabled: false
+
+        # Disabling Stimulus App
+        'sylius_admin.base#javascripts':
+            symfony_ux:
+                enabled: false
+
+        'sylius_admin.supplier.show.content':
+            body:
+                template: 'supplier/show/content/body.html.twig'
+
+        'sylius_admin.common.component.sidebar.logo':
+            image:
+                # template: '@SyliusBootstrapAdminUi/shared/crud/common/sidebar/logo/image.html.twig'
+                template: 'shared/crud/common/sidebar/logo/image.html.twig'
+
+        'sylius_admin.security.login.page.logo':
+            image:
+                # template: '@SyliusBootstrapAdminUi/security/common/logo/image.html.twig'
+                template: 'security/common/logo/image.html.twig'
