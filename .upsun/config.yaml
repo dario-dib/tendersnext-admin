@@ -23,7 +23,6 @@ applications:
                 - mbstring
                 - sodium
                 - xsl
-                - pdo_mysql
 
 
         variables:
