@@ -7,7 +7,6 @@ services:
         type: mariadb:11.4
 
 
-
 applications:
     app:
         source:
@@ -24,6 +23,7 @@ applications:
                 - mbstring
                 - sodium
                 - xsl
+                - pdo_mysql
 
 
         variables:
