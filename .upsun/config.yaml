@@ -3,8 +3,10 @@ routes:
     "http://{all}/": { type: redirect, to: "https://{all}/" }
 
 services:
-    postgresql:
-        type: postgresql:17
+    mariadb:
+        type: mariadb:11.4
+
+
 
 applications:
     app:
@@ -22,7 +24,7 @@ applications:
                 - mbstring
                 - sodium
                 - xsl
-                - pdo_pgsql
+
 
         variables:
             php:
@@ -39,6 +41,7 @@ applications:
 
         mounts:
             "/var": { source: storage, source_path: var }
+
 
 
         hooks:
@@ -69,4 +72,4 @@ applications:
                     # Consume "async" messages (as configured in the routing section of config/packages/messenger.yaml)
                     start: symfony console --time-limit=3600 --memory-limit=64M messenger:consume async
         relationships:
-            postgresql:
+            mariadb:
