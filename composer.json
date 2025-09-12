@@ -12,6 +12,7 @@
         "doctrine/orm": "^2.16",
         "pagerfanta/doctrine-orm-adapter": "^4.7",
         "sylius/bootstrap-admin-ui": "^0.8.1",
+        "sylius/twig-hooks": "^0.8.1",
         "sylius/ui-translations": "^0.8.1",
         "symfony/asset-mapper": "7.3.*",
         "symfony/console": "7.3.*",
@@ -75,6 +76,8 @@
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^4.1",
-        "symfony/maker-bundle": "^1.64"
+        "symfony/maker-bundle": "^1.64",
+        "symfony/stopwatch": "7.3.*",
+        "symfony/web-profiler-bundle": "7.3.*"
     }
 }

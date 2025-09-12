@@ -28,3 +28,10 @@ sylius_twig_hooks:
             image:
                 # template: '@SyliusBootstrapAdminUi/security/common/logo/image.html.twig'
                 template: 'security/common/logo/image.html.twig'
+
+        'sylius_admin.base#base_title':
+            # Replace "brand" with the exact name you saw in the profiler
+            default: { enabled: false }
+            app_title:
+                priority: 1
+                template: 'admin/_base_title.html.twig'
