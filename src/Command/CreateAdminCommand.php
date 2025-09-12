@@ -23,7 +23,9 @@ class CreateAdminCommand extends Command
     protected function configure(): void
     {
         $this->addArgument('email', InputArgument::REQUIRED)
-            ->addArgument('password', InputArgument::REQUIRED);
+            ->addArgument('password', InputArgument::REQUIRED)
+            ->addArgument('firstName', InputArgument::REQUIRED)
+            ->addArgument('lastName', InputArgument::REQUIRED);
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
@@ -31,6 +33,8 @@ class CreateAdminCommand extends Command
         $io = new SymfonyStyle($input, $output);
         $email = $input->getArgument('email');
         $password = $input->getArgument('password');
+        $firstName = $input->getArgument('firstName');
+        $lastName = $input->getArgument('lastName');
 
         $repo = $this->em->getRepository(User::class);
         $user = $repo->findOneBy(['email' => $email]) ?? new User();
@@ -39,6 +43,8 @@ class CreateAdminCommand extends Command
         $user->setEmail($email);
         $user->setRoles(['ROLE_ADMIN']);
         $user->setPassword($this->hasher->hashPassword($user, $password));
+        $user->setFirstName($firstName);
+        $user->setLastName($lastName);
 
         $this->em->persist($user);
         $this->em->flush();
