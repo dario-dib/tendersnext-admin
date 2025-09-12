@@ -15,7 +15,7 @@ use Sylius\Resource\Metadata\Show;
 use Sylius\Resource\Metadata\Update;
 use Sylius\Resource\Model\ResourceInterface;
 
-use App\Grid\SupplierOffergrid;
+use App\Grid\SupplierOfferGrid;
 
 #[AsResource(
     section: 'admin',
@@ -29,7 +29,7 @@ use App\Grid\SupplierOffergrid;
         new Delete(),
         new BulkDelete(),
         new Index(
-            grid: SupplierofferGrid::class,
+            grid: SupplierOfferGrid::class,
         ),
     ],
 )]
