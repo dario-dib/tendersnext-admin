@@ -2,4 +2,5 @@ app:
     ui:
         suppliers: Suppliers
         supplier: Supplier
-
+        supplier_offers: Supplier Offers
+        supplier_offer: Supplier Offer

@@ -19,24 +19,34 @@ final readonly class MenuBuilder implements MenuBuilderInterface
     public function createMenu(array $options): ItemInterface
     {
         $menu = $this->factory->createItem('root');
-        // ...
-        $this->addLibrarySubMenu($menu);
+        $this->addSupplierSubMenu($menu);
 
         return $menu;
     }
 
-    private function addLibrarySubMenu(ItemInterface $menu): void
+    private function addSupplierSubMenu(ItemInterface $menu): void
     {
-        $library = $menu
-            ->addChild('library')
+        $supplier = $menu
+            ->addChild('supplier')
             ->setLabel('app.ui.suppliers')
             ->setLabelAttribute('icon', 'tabler:books')
         ;
 
-        $library->addChild('supplier', ['route' => 'app_admin_supplier_index'])
+        $supplier->addChild('supplier', ['route' => 'app_admin_supplier_index'])
             ->setLabel('app.ui.suppliers')
             ->setLabelAttribute('icon', 'supplier')
         ;
+
+        $supplier->addChild('supplier_offer', ['route' => 'app_admin_supplier_offer_index'])
+            ->setLabel('app.ui.supplier_offers')
+            ->setLabelAttribute('icon', 'supplier')
+        ;
+
+//        $supplier->addChild('supplierOffer', ['route' => 'app_admin_supplier_offer_index'])
+//            ->setLabel('app.ui.supplier_offers')
+//            ->setLabelAttribute('icon', 'supplier')
+//        ;
+
     }
 
 }

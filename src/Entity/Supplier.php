@@ -5,6 +5,8 @@ namespace App\Entity;
 use App\Form\SupplierType;
 use App\Grid\SupplierGrid;
 use App\Repository\SupplierRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Sylius\Resource\Metadata\BulkDelete;
 use Sylius\Resource\Model\ResourceInterface;
@@ -52,6 +54,17 @@ class Supplier implements ResourceInterface
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $phoneNumber = null;
+
+    /**
+     * @var Collection<int, SupplierOffer>
+     */
+    #[ORM\OneToMany(mappedBy: 'supplier', targetEntity: SupplierOffer::class, orphanRemoval: true)]
+    private Collection $supplierOffers;
+
+    public function __construct()
+    {
+        $this->supplierOffers = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -102,6 +115,36 @@ class Supplier implements ResourceInterface
     public function setPhoneNumber(?string $phoneNumber): static
     {
         $this->phoneNumber = $phoneNumber;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, SupplierOffer>
+     */
+    public function getSupplierOffers(): Collection
+    {
+        return $this->supplierOffers;
+    }
+
+    public function addSupplierOffer(SupplierOffer $supplierOffer): static
+    {
+        if (!$this->supplierOffers->contains($supplierOffer)) {
+            $this->supplierOffers->add($supplierOffer);
+            $supplierOffer->setSupplier($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSupplierOffer(SupplierOffer $supplierOffer): static
+    {
+        if ($this->supplierOffers->removeElement($supplierOffer)) {
+            // set the owning side to null (unless already changed)
+            if ($supplierOffer->getSupplier() === $this) {
+                $supplierOffer->setSupplier(null);
+            }
+        }
 
         return $this;
     }
