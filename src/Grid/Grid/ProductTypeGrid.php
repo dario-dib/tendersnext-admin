@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Grid;
+namespace App\Grid\Grid;
 
-use App\Entity\SupplierOffer;
+use App\Entity\ProductType;
 use Sylius\Bundle\GridBundle\Builder\Action\CreateAction;
 use Sylius\Bundle\GridBundle\Builder\Action\DeleteAction;
-use Sylius\Bundle\GridBundle\Builder\Action\ShowAction;
 use Sylius\Bundle\GridBundle\Builder\Action\UpdateAction;
 use Sylius\Bundle\GridBundle\Builder\ActionGroup\BulkActionGroup;
 use Sylius\Bundle\GridBundle\Builder\ActionGroup\ItemActionGroup;
@@ -15,7 +14,7 @@ use Sylius\Bundle\GridBundle\Builder\GridBuilderInterface;
 use Sylius\Bundle\GridBundle\Grid\AbstractGrid;
 use Sylius\Bundle\GridBundle\Grid\ResourceAwareGridInterface;
 
-final class SupplierOfferGrid extends AbstractGrid implements ResourceAwareGridInterface
+final class ProductTypeGrid extends AbstractGrid implements ResourceAwareGridInterface
 {
     public function __construct()
     {
@@ -24,7 +23,7 @@ final class SupplierOfferGrid extends AbstractGrid implements ResourceAwareGridI
 
     public static function getName(): string
     {
-        return 'app_supplier_offer';
+        return 'app_product_type';
     }
 
     public function buildGrid(GridBuilderInterface $gridBuilder): void
@@ -32,18 +31,8 @@ final class SupplierOfferGrid extends AbstractGrid implements ResourceAwareGridI
         $gridBuilder
             // see https://github.com/Sylius/SyliusGridBundle/blob/master/docs/field_types.md
             ->addField(
-                StringField::create('supplierSKU')
-                    ->setLabel('SupplierSKU')
-                    ->setSortable(true)
-            )
-            ->addField(
-                StringField::create('productTitle')
-                    ->setLabel('ProductTitle')
-                    ->setSortable(true)
-            )
-            ->addField(
-                StringField::create('productDescription')
-                    ->setLabel('ProductDescription')
+                StringField::create('TypeName')
+                    ->setLabel('TypeName')
                     ->setSortable(true)
             )
             ->addActionGroup(
@@ -68,6 +57,6 @@ final class SupplierOfferGrid extends AbstractGrid implements ResourceAwareGridI
 
     public function getResourceClass(): string
     {
-        return SupplierOffer::class;
+        return ProductType::class;
     }
 }

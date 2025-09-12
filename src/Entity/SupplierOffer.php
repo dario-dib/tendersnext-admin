@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Form\SupplierOfferType;
+use App\Grid\Grid\SupplierOfferGrid;
 use App\Repository\SupplierOfferRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
@@ -14,8 +15,6 @@ use Sylius\Resource\Metadata\Index;
 use Sylius\Resource\Metadata\Show;
 use Sylius\Resource\Metadata\Update;
 use Sylius\Resource\Model\ResourceInterface;
-
-use App\Grid\SupplierOfferGrid;
 
 #[AsResource(
     section: 'admin',
@@ -56,6 +55,9 @@ class SupplierOffer implements ResourceInterface
     #[ORM\ManyToOne(inversedBy: 'supplierOffers')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Supplier $supplier = null;
+
+    #[ORM\ManyToOne(inversedBy: 'supplierOffers')]
+    private ?Product $product = null;
 
     public function getId(): ?int
     {
@@ -118,6 +120,18 @@ class SupplierOffer implements ResourceInterface
     public function setSupplier(?Supplier $supplier): static
     {
         $this->supplier = $supplier;
+
+        return $this;
+    }
+
+    public function getProduct(): ?Product
+    {
+        return $this->product;
+    }
+
+    public function setProduct(?Product $product): static
+    {
+        $this->product = $product;
 
         return $this;
     }

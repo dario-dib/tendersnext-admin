@@ -4,3 +4,7 @@ app:
         supplier: Supplier
         supplier_offers: Supplier Offers
         supplier_offer: Supplier Offer
+        products_types: Product Types
+        products: Products
+        catalog: Catalog
+        product_types: Product Types

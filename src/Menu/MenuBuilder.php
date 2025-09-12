@@ -20,7 +20,7 @@ final readonly class MenuBuilder implements MenuBuilderInterface
     {
         $menu = $this->factory->createItem('root');
         $this->addSupplierSubMenu($menu);
-
+        $this->addCatalogSubMenu($menu);
         return $menu;
     }
 
@@ -29,24 +29,37 @@ final readonly class MenuBuilder implements MenuBuilderInterface
         $supplier = $menu
             ->addChild('supplier')
             ->setLabel('app.ui.suppliers')
-            ->setLabelAttribute('icon', 'tabler:books')
+            ->setLabelAttribute('icon', 'tabler:building-skyscraper')
         ;
 
         $supplier->addChild('supplier', ['route' => 'app_admin_supplier_index'])
             ->setLabel('app.ui.suppliers')
-            ->setLabelAttribute('icon', 'supplier')
+            ->setLabelAttribute('icon', 'tabler:building-skyscraper')
         ;
 
         $supplier->addChild('supplier_offer', ['route' => 'app_admin_supplier_offer_index'])
             ->setLabel('app.ui.supplier_offers')
-            ->setLabelAttribute('icon', 'supplier')
+            ->setLabelAttribute('icon', 'tabler:building-skyscraper')
+        ;
+    }
+
+    private function addCatalogSubMenu(ItemInterface $menu): void
+    {
+        $catalog = $menu
+            ->addChild('catalog')
+            ->setLabel('app.ui.catalog')
+            ->setLabelAttribute('icon', 'tabler:brand-superhuman')
         ;
 
-//        $supplier->addChild('supplierOffer', ['route' => 'app_admin_supplier_offer_index'])
-//            ->setLabel('app.ui.supplier_offers')
-//            ->setLabelAttribute('icon', 'supplier')
-//        ;
+        $catalog->addChild('product', ['route' => 'app_admin_product_index'])
+            ->setLabel('app.ui.products')
+            ->setLabelAttribute('icon', 'tabler:brand-superhuman')
+        ;
 
+        $catalog->addChild('product_type', ['route' => 'app_admin_product_type_index'])
+            ->setLabel('app.ui.products_types')
+            ->setLabelAttribute('icon', 'tabler:brand-superhuman')
+        ;
     }
 
 }
