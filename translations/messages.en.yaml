@@ -1,0 +1,5 @@
+app:
+    ui:
+        suppliers: Suppliers
+        supplier: Supplier
+
