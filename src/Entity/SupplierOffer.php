@@ -3,7 +3,7 @@
 namespace App\Entity;
 
 use App\Form\SupplierOfferType;
-use App\Grid\Grid\SupplierOfferGrid;
+use App\Grid\SupplierOfferGrid;
 use App\Repository\SupplierOfferRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
@@ -58,6 +58,12 @@ class SupplierOffer implements ResourceInterface
 
     #[ORM\ManyToOne(inversedBy: 'supplierOffers')]
     private ?Product $product = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?float $PurchasePrice = null;
+
+    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
+    private ?\DateTime $PurchasePriceValidUntil = null;
 
     public function getId(): ?int
     {
@@ -132,6 +138,30 @@ class SupplierOffer implements ResourceInterface
     public function setProduct(?Product $product): static
     {
         $this->product = $product;
+
+        return $this;
+    }
+
+    public function getPurchasePrice(): ?float
+    {
+        return $this->PurchasePrice;
+    }
+
+    public function setPurchasePrice(?float $PurchasePrice): static
+    {
+        $this->PurchasePrice = $PurchasePrice;
+
+        return $this;
+    }
+
+    public function getPurchasePriceValidUntil(): ?\DateTime
+    {
+        return $this->PurchasePriceValidUntil;
+    }
+
+    public function setPurchasePriceValidUntil(?\DateTime $PurchasePriceValidUntil): static
+    {
+        $this->PurchasePriceValidUntil = $PurchasePriceValidUntil;
 
         return $this;
     }

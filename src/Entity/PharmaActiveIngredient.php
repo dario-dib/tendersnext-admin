@@ -2,9 +2,10 @@
 
 namespace App\Entity;
 
-use App\Form\ProductTypeFormType;
-use App\Grid\ProductTypeGrid;
-use App\Repository\ProductTypeRepository;
+use App\Form\PharmaActiveIngredientFormType;
+use App\Grid\PharmaActiveIngredientGrid;
+use App\Grid\ProductGrid;
+use App\Repository\PharmaActiveIngredientRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -21,7 +22,7 @@ use Sylius\Resource\Model\ResourceInterface;
     section: 'admin',
     routePrefix: '/admin',
     templatesDir: '@SyliusAdminUi/crud',
-    formType: ProductTypeFormType::class,
+    formType: PharmaActiveIngredientFormType::class,
     operations: [
         new Create(),
         new Update(),
@@ -29,12 +30,12 @@ use Sylius\Resource\Model\ResourceInterface;
         new Delete(),
         new BulkDelete(),
         new Index(
-            grid: ProductTypeGrid::class,
+            grid: PharmaActiveIngredientGrid::class,
         ),
     ],
 )]
-#[ORM\Entity(repositoryClass: ProductTypeRepository::class)]
-class ProductType implements ResourceInterface
+#[ORM\Entity(repositoryClass: PharmaActiveIngredientRepository::class)]
+class PharmaActiveIngredient implements ResourceInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -42,12 +43,12 @@ class ProductType implements ResourceInterface
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $TypeName = null;
+    private ?string $name = null;
 
     /**
      * @var Collection<int, Product>
      */
-    #[ORM\OneToMany(mappedBy: 'productType', targetEntity: Product::class)]
+    #[ORM\OneToMany(mappedBy: 'pharmaActiveIngredient', targetEntity: Product::class)]
     private Collection $product;
 
     public function __construct()
@@ -60,14 +61,14 @@ class ProductType implements ResourceInterface
         return $this->id;
     }
 
-    public function getTypeName(): ?string
+    public function getName(): ?string
     {
-        return $this->TypeName;
+        return $this->name;
     }
 
-    public function setTypeName(string $TypeName): static
+    public function setName(string $name): static
     {
-        $this->TypeName = $TypeName;
+        $this->name = $name;
 
         return $this;
     }
@@ -84,7 +85,7 @@ class ProductType implements ResourceInterface
     {
         if (!$this->product->contains($product)) {
             $this->product->add($product);
-            $product->setProductType($this);
+            $product->setPharmaActiveIngredient($this);
         }
 
         return $this;
@@ -94,8 +95,8 @@ class ProductType implements ResourceInterface
     {
         if ($this->product->removeElement($product)) {
             // set the owning side to null (unless already changed)
-            if ($product->getProductType() === $this) {
-                $product->setProductType(null);
+            if ($product->getPharmaActiveIngredient() === $this) {
+                $product->setPharmaActiveIngredient(null);
             }
         }
 

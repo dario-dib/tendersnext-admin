@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Grid\Grid;
+namespace App\Grid;
 
-use App\Entity\Supplier;
+use App\Entity\Product;
 use Sylius\Bundle\GridBundle\Builder\Action\CreateAction;
 use Sylius\Bundle\GridBundle\Builder\Action\DeleteAction;
 use Sylius\Bundle\GridBundle\Builder\Action\UpdateAction;
@@ -14,7 +14,7 @@ use Sylius\Bundle\GridBundle\Builder\GridBuilderInterface;
 use Sylius\Bundle\GridBundle\Grid\AbstractGrid;
 use Sylius\Bundle\GridBundle\Grid\ResourceAwareGridInterface;
 
-final class SupplierGrid extends AbstractGrid implements ResourceAwareGridInterface
+final class ProductGrid extends AbstractGrid implements ResourceAwareGridInterface
 {
     public function __construct()
     {
@@ -23,7 +23,7 @@ final class SupplierGrid extends AbstractGrid implements ResourceAwareGridInterf
 
     public static function getName(): string
     {
-        return 'app_supplier';
+        return 'app_product';
     }
 
     public function buildGrid(GridBuilderInterface $gridBuilder): void
@@ -31,23 +31,13 @@ final class SupplierGrid extends AbstractGrid implements ResourceAwareGridInterf
         $gridBuilder
             // see https://github.com/Sylius/SyliusGridBundle/blob/master/docs/field_types.md
             ->addField(
-                StringField::create('name')
+                StringField::create('Name')
                     ->setLabel('Name')
                     ->setSortable(true)
             )
             ->addField(
-                StringField::create('mainContactEmail')
-                    ->setLabel('MainContactEmail')
-                    ->setSortable(true)
-            )
-            ->addField(
-                StringField::create('secondContactEmail')
-                    ->setLabel('SecondContactEmail')
-                    ->setSortable(true)
-            )
-            ->addField(
-                StringField::create('phoneNumber')
-                    ->setLabel('PhoneNumber')
+                StringField::create('Description')
+                    ->setLabel('Description')
                     ->setSortable(true)
             )
             ->addActionGroup(
@@ -72,6 +62,6 @@ final class SupplierGrid extends AbstractGrid implements ResourceAwareGridInterf
 
     public function getResourceClass(): string
     {
-        return Supplier::class;
+        return Product::class;
     }
 }

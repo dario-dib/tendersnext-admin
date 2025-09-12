@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Grid\Grid;
+namespace App\Grid;
 
-use App\Entity\SupplierOffer;
+use App\Entity\PharmaActiveIngredient;
 use Sylius\Bundle\GridBundle\Builder\Action\CreateAction;
 use Sylius\Bundle\GridBundle\Builder\Action\DeleteAction;
+use Sylius\Bundle\GridBundle\Builder\Action\ShowAction;
 use Sylius\Bundle\GridBundle\Builder\Action\UpdateAction;
 use Sylius\Bundle\GridBundle\Builder\ActionGroup\BulkActionGroup;
 use Sylius\Bundle\GridBundle\Builder\ActionGroup\ItemActionGroup;
@@ -14,7 +15,7 @@ use Sylius\Bundle\GridBundle\Builder\GridBuilderInterface;
 use Sylius\Bundle\GridBundle\Grid\AbstractGrid;
 use Sylius\Bundle\GridBundle\Grid\ResourceAwareGridInterface;
 
-final class SupplierOfferGrid extends AbstractGrid implements ResourceAwareGridInterface
+final class PharmaActiveIngredientGrid extends AbstractGrid implements ResourceAwareGridInterface
 {
     public function __construct()
     {
@@ -23,7 +24,7 @@ final class SupplierOfferGrid extends AbstractGrid implements ResourceAwareGridI
 
     public static function getName(): string
     {
-        return 'app_supplier_offer';
+        return 'app_pharma_active_ingredient';
     }
 
     public function buildGrid(GridBuilderInterface $gridBuilder): void
@@ -31,18 +32,8 @@ final class SupplierOfferGrid extends AbstractGrid implements ResourceAwareGridI
         $gridBuilder
             // see https://github.com/Sylius/SyliusGridBundle/blob/master/docs/field_types.md
             ->addField(
-                StringField::create('supplierSKU')
-                    ->setLabel('SupplierSKU')
-                    ->setSortable(true)
-            )
-            ->addField(
-                StringField::create('productTitle')
-                    ->setLabel('ProductTitle')
-                    ->setSortable(true)
-            )
-            ->addField(
-                StringField::create('productDescription')
-                    ->setLabel('ProductDescription')
+                StringField::create('name')
+                    ->setLabel('Name')
                     ->setSortable(true)
             )
             ->addActionGroup(
@@ -67,6 +58,6 @@ final class SupplierOfferGrid extends AbstractGrid implements ResourceAwareGridI
 
     public function getResourceClass(): string
     {
-        return SupplierOffer::class;
+        return PharmaActiveIngredient::class;
     }
 }

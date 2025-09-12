@@ -8,3 +8,10 @@ app:
         products: Products
         catalog: Catalog
         product_types: Product Types
+        product_taxonomy: Taxonomies
+        product_taxonomies: Taxonomies
+        product: Product
+        product_type: Product Type
+        pharma_active_ingredient: Pharma Ingredients
+        pharma_active_ingredients: Pharma Active Ingredients
+

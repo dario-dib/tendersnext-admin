@@ -3,7 +3,7 @@
 namespace App\Entity;
 
 use App\Form\ProductFormType;
-use App\Grid\Grid\ProductGrid;
+use App\Grid\ProductGrid;
 use App\Repository\ProductRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -58,6 +58,18 @@ class Product implements ResourceInterface
      */
     #[ORM\OneToMany(mappedBy: 'product', targetEntity: SupplierOffer::class)]
     private Collection $supplierOffers;
+
+    #[ORM\ManyToOne(inversedBy: 'product')]
+    private ?ProductTaxonomy $productTaxonomy = null;
+
+    #[ORM\ManyToOne(inversedBy: 'product')]
+    private ?PharmaActiveIngredient $pharmaActiveIngredient = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?int $PharmaStrength = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $PharmaDosageForm = null;
 
     public function __construct()
     {
@@ -131,6 +143,54 @@ class Product implements ResourceInterface
                 $supplierOffer->setProduct(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getProductTaxonomy(): ?ProductTaxonomy
+    {
+        return $this->productTaxonomy;
+    }
+
+    public function setProductTaxonomy(?ProductTaxonomy $productTaxonomy): static
+    {
+        $this->productTaxonomy = $productTaxonomy;
+
+        return $this;
+    }
+
+    public function getPharmaActiveIngredient(): ?PharmaActiveIngredient
+    {
+        return $this->pharmaActiveIngredient;
+    }
+
+    public function setPharmaActiveIngredient(?PharmaActiveIngredient $pharmaActiveIngredient): static
+    {
+        $this->pharmaActiveIngredient = $pharmaActiveIngredient;
+
+        return $this;
+    }
+
+    public function getPharmaStrength(): ?int
+    {
+        return $this->PharmaStrength;
+    }
+
+    public function setPharmaStrength(?int $PharmaStrength): static
+    {
+        $this->PharmaStrength = $PharmaStrength;
+
+        return $this;
+    }
+
+    public function getPharmaDosageForm(): ?string
+    {
+        return $this->PharmaDosageForm;
+    }
+
+    public function setPharmaDosageForm(?string $PharmaDosageForm): static
+    {
+        $this->PharmaDosageForm = $PharmaDosageForm;
 
         return $this;
     }

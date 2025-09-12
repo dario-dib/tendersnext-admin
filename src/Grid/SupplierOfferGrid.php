@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Grid\Grid;
+namespace App\Grid;
 
-use App\Entity\Product;
+use App\Entity\SupplierOffer;
 use Sylius\Bundle\GridBundle\Builder\Action\CreateAction;
 use Sylius\Bundle\GridBundle\Builder\Action\DeleteAction;
 use Sylius\Bundle\GridBundle\Builder\Action\UpdateAction;
@@ -14,7 +14,7 @@ use Sylius\Bundle\GridBundle\Builder\GridBuilderInterface;
 use Sylius\Bundle\GridBundle\Grid\AbstractGrid;
 use Sylius\Bundle\GridBundle\Grid\ResourceAwareGridInterface;
 
-final class ProductGrid extends AbstractGrid implements ResourceAwareGridInterface
+final class SupplierOfferGrid extends AbstractGrid implements ResourceAwareGridInterface
 {
     public function __construct()
     {
@@ -23,7 +23,7 @@ final class ProductGrid extends AbstractGrid implements ResourceAwareGridInterfa
 
     public static function getName(): string
     {
-        return 'app_product';
+        return 'app_supplier_offer';
     }
 
     public function buildGrid(GridBuilderInterface $gridBuilder): void
@@ -31,13 +31,23 @@ final class ProductGrid extends AbstractGrid implements ResourceAwareGridInterfa
         $gridBuilder
             // see https://github.com/Sylius/SyliusGridBundle/blob/master/docs/field_types.md
             ->addField(
-                StringField::create('Name')
-                    ->setLabel('Name')
+                StringField::create('supplierSKU')
+                    ->setLabel('SupplierSKU')
                     ->setSortable(true)
             )
             ->addField(
-                StringField::create('Description')
-                    ->setLabel('Description')
+                StringField::create('productTitle')
+                    ->setLabel('ProductTitle')
+                    ->setSortable(true)
+            )
+            ->addField(
+                StringField::create('product')
+                    ->setLabel('Linked Product')
+                    ->setSortable(true)
+            )
+            ->addField(
+                StringField::create('productDescription')
+                    ->setLabel('ProductDescription')
                     ->setSortable(true)
             )
             ->addActionGroup(
@@ -62,6 +72,6 @@ final class ProductGrid extends AbstractGrid implements ResourceAwareGridInterfa
 
     public function getResourceClass(): string
     {
-        return Product::class;
+        return SupplierOffer::class;
     }
 }

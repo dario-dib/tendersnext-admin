@@ -21,6 +21,7 @@ final readonly class MenuBuilder implements MenuBuilderInterface
         $menu = $this->factory->createItem('root');
         $this->addSupplierSubMenu($menu);
         $this->addCatalogSubMenu($menu);
+
         return $menu;
     }
 
@@ -60,6 +61,17 @@ final readonly class MenuBuilder implements MenuBuilderInterface
             ->setLabel('app.ui.products_types')
             ->setLabelAttribute('icon', 'tabler:brand-superhuman')
         ;
+
+        $catalog->addChild('product_taxonomy', ['route' => 'app_admin_product_taxonomy_index'])
+            ->setLabel('app.ui.product_taxonomy')
+            ->setLabelAttribute('icon', 'tabler:brand-superhuman')
+        ;
+
+        $catalog->addChild('pharma_active_ingredient', ['route' => 'app_admin_pharma_active_ingredient_index'])
+            ->setLabel('app.ui.pharma_active_ingredient')
+            ->setLabelAttribute('icon', 'tabler:brand-superhuman')
+        ;
     }
+
 
 }

@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\Product;
 use App\Entity\Supplier;
 use App\Entity\SupplierOffer;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -18,8 +19,14 @@ class SupplierOfferType extends AbstractType
             ->add('productTitle')
             ->add('productDescription')
             ->add('leadTimeDays')
+            ->add('PurchasePrice')
+            ->add('PurchasePriceValidUntil')
             ->add('supplier', EntityType::class, [
                 'class' => Supplier::class,
+                'choice_label' => 'name',
+            ])
+            ->add('product', EntityType::class, [
+                'class' => Product::class,
                 'choice_label' => 'name',
             ])
         ;

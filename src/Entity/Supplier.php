@@ -3,7 +3,7 @@
 namespace App\Entity;
 
 use App\Form\SupplierType;
-use App\Grid\Grid\SupplierGrid;
+use App\Grid\SupplierGrid;
 use App\Repository\SupplierRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
