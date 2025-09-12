@@ -22,4 +22,5 @@ class PharmaActiveIngredientFormType extends AbstractType
             'data_class' => PharmaActiveIngredient::class,
         ]);
     }
+
 }

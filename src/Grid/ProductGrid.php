@@ -40,6 +40,23 @@ final class ProductGrid extends AbstractGrid implements ResourceAwareGridInterfa
                     ->setLabel('Description')
                     ->setSortable(true)
             )
+            ->addField(
+                StringField::create('productType')
+                    ->setLabel('Type')
+                    ->setPath('productType.typeName')
+                    ->setSortable(true, 'productType.typeName')
+            )
+            ->addField(
+                StringField::create('productTaxonomy')
+                    ->setLabel('Taxonomy')
+                    ->setPath('productTaxonomy.name')
+                    ->setSortable(true, 'productTaxonomy.name')
+            )
+//            ->addField(
+//                StringField::create('pharmaActiveIngredientGridLabel')
+//                    ->setLabel('Pharma Ingredient')
+//                    ->setPath('pharmaActiveIngredient.name')
+//            )
             ->addActionGroup(
                 MainActionGroup::create(
                     CreateAction::create(),

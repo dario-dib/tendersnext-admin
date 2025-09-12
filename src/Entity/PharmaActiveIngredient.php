@@ -102,4 +102,9 @@ class PharmaActiveIngredient implements ResourceInterface
 
         return $this;
     }
+
+//    public function getPharmaActiveIngredientGridLabel(): ?string
+//    {
+//        return $this->getName();
+//    }
 }

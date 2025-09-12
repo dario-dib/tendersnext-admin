@@ -41,9 +41,10 @@ final class SupplierOfferGrid extends AbstractGrid implements ResourceAwareGridI
                     ->setSortable(true)
             )
             ->addField(
-                StringField::create('product')
+                StringField::create('productName')
                     ->setLabel('Linked Product')
-                    ->setSortable(true)
+                    ->setPath('product.name')
+                    ->setSortable(true, 'product.name')
             )
             ->addField(
                 StringField::create('productDescription')

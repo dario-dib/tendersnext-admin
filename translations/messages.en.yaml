@@ -4,10 +4,10 @@ app:
         supplier: Supplier
         supplier_offers: Supplier Offers
         supplier_offer: Supplier Offer
-        products_types: Product Types
+        products_types: Types
         products: Products
         catalog: Catalog
-        product_types: Product Types
+        product_types: Types
         product_taxonomy: Taxonomies
         product_taxonomies: Taxonomies
         product: Product
