@@ -42,7 +42,7 @@ class SupplierOffer implements ResourceInterface
     private ?int $id = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $internalSKU = null;
+    private ?string $supplierSKU = null;
 
     #[ORM\Column(length: 255)]
     private ?string $productTitle = null;
@@ -62,14 +62,14 @@ class SupplierOffer implements ResourceInterface
         return $this->id;
     }
 
-    public function getInternalSKU(): ?string
+    public function getSupplierSKU(): ?string
     {
-        return $this->internalSKU;
+        return $this->supplierSKU;
     }
 
-    public function setInternalSKU(?string $internalSKU): static
+    public function setSupplierSKU(?string $supplierSKU): static
     {
-        $this->internalSKU = $internalSKU;
+        $this->supplierSKU = $supplierSKU;
 
         return $this;
     }

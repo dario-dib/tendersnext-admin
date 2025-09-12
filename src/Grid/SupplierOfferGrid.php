@@ -32,8 +32,8 @@ final class SupplierOfferGrid extends AbstractGrid implements ResourceAwareGridI
         $gridBuilder
             // see https://github.com/Sylius/SyliusGridBundle/blob/master/docs/field_types.md
             ->addField(
-                StringField::create('internalSKU')
-                    ->setLabel('InternalSKU')
+                StringField::create('supplierSKU')
+                    ->setLabel('SupplierSKU')
                     ->setSortable(true)
             )
             ->addField(
