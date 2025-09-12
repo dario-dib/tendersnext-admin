@@ -24,38 +24,5 @@ class UserFixtures extends Fixture
         $user->setRoles(['ROLE_ADMIN']);
         $manager->persist($user);
         $manager->flush();
-
-        $user = new User();
-        $user->setEmail('nicolas@tendersnext.com');
-        $user->setFirstName('Nicolas');
-        $user->setLastName('Balashenko');
-        $user->setPassword(
-            $this->hasher->hashPassword($user, 'SunnyDubai')
-        );
-        $user->setRoles(['ROLE_ADMIN']);
-        $manager->persist($user);
-        $manager->flush();
-
-        $user = new User();
-        $user->setEmail('niels@tendersnext.com');
-        $user->setFirstName('Niels');
-        $user->setLastName('Groen');
-        $user->setPassword(
-            $this->hasher->hashPassword($user, 'SunnyDubai')
-        );
-        $user->setRoles(['ROLE_ADMIN']);
-        $manager->persist($user);
-        $manager->flush();
-
-        $user = new User();
-        $user->setEmail('joppe@tendersnext.com');
-        $user->setFirstName('Joppe');
-        $user->setLastName('Hattink');
-        $user->setPassword(
-            $this->hasher->hashPassword($user, 'SunnyDubai')
-        );
-        $user->setRoles(['ROLE_ADMIN']);
-        $manager->persist($user);
-        $manager->flush();
     }
 }
