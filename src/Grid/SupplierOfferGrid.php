@@ -5,6 +5,7 @@ namespace App\Grid;
 use App\Entity\SupplierOffer;
 use Sylius\Bundle\GridBundle\Builder\Action\CreateAction;
 use Sylius\Bundle\GridBundle\Builder\Action\DeleteAction;
+use Sylius\Bundle\GridBundle\Builder\Action\ShowAction;
 use Sylius\Bundle\GridBundle\Builder\Action\UpdateAction;
 use Sylius\Bundle\GridBundle\Builder\ActionGroup\BulkActionGroup;
 use Sylius\Bundle\GridBundle\Builder\ActionGroup\ItemActionGroup;
@@ -58,7 +59,7 @@ final class SupplierOfferGrid extends AbstractGrid implements ResourceAwareGridI
             )
             ->addActionGroup(
                 ItemActionGroup::create(
-                    // ShowAction::create(),
+                    ShowAction::create(),
                     UpdateAction::create(),
                     DeleteAction::create()
                 )

@@ -12,3 +12,7 @@
     --tblr-link-color: var(--tblr-primary);
     --tblr-link-hover-color: rgba(var(--tblr-primary-rgb), .85);
 }
+
+.navbar-vertical .navbar-collapse .sidebar.navbar-nav .nav-item .dropdown-menu-column .dropdown-item.active {
+    color: #0ea5e9
+}

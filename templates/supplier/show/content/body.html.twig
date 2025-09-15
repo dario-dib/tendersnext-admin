@@ -3,15 +3,85 @@
 <div class="page-body">
     <div class="container-xl">
 
-        {% for key, value in supplier %}
-            <div class="row">
-                <div class="col-12">
-                    <p>
+        <div class="table-responsive">
+            <table class="table table-striped table-hover align-middle">
+                <thead class="table-light">
+                <tr>
+                    <th scope="col">Key</th>
+                    <th scope="col">Value</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        Supplier Name
+                    </td>
+                    <td>
                         {{ supplier.name }}
-                    </p>
-                </div>
-            </div>
-        {% endfor %}
+                    </td>
+                <tr>
+                <tr>
+                    <td>
+                        Main Contact Email
+                    </td>
+                    <td>
+                        {{ supplier.mainContactEmail }}
+                    </td>
+                <tr>
+                <tr>
+                    <td>
+                        Secondary email
+                    </td>
+                    <td>
+                        {{ supplier.secondContactEmail }}
+                    </td>
+                <tr>
+                <tr>
+                    <td>
+                        PhoneNumber
+                    </td>
+                    <td>
+                        {{ supplier.PhoneNumber }}
+                    </td>
+                <tr>
+                </tbody>
+            </table>
+        </div>
+
+        <hr>
+        <h2>Supplier Offers</h2>
+
+        <table class="table table-striped table-hover align-middle">
+            <thead class="table-light">
+            </thead>
+            <tr>
+                <th scope="col">Supplier SKU</th>
+                <th scope="col">Title</th>
+                <th scope="col">Purchase Price</th>
+            </tr>
+            <tbody>
+            {% for supplierOffer in supplier.supplierOffers %}
+                <tr>
+                    <td>
+                      <a href="{{ path('app_admin_supplier_offer_show', {id: supplierOffer.id }) }}">  {{ supplierOffer.supplierSKU }} </a>
+                    </td>
+                    <td>
+                        {{ supplierOffer.productTitle }}
+                    </td>
+                    <td>
+                        {{ supplierOffer.PurchasePrice }}
+                    </td>
+                <tr>
+            {% endfor %}
+
+            </tbody>
+        </table>
+
+
+
+
 
     </div>
 </div>
+
+

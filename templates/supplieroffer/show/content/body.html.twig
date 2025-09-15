@@ -1,0 +1,85 @@
+{% set supplierOffer = hookable_metadata.context.supplier_offer %}
+
+<div class="page-body">
+    <div class="container-xl">
+        <div class="table-responsive">
+            <table class="table table-striped table-hover align-middle">
+                <thead class="table-light">
+                <tr>
+                    <th scope="col">Key</th>
+                    <th scope="col">Value</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        Supplier SKU
+                    </td>
+                    <td>
+                        {{ supplierOffer.supplierSKU }}
+                    </td>
+                <tr>
+                <tr>
+                    <td>
+                        Supplier Name
+                    </td>
+                    <td>
+                       <a href="{{ path('app_admin_supplier_show', {id: supplierOffer.supplier.id }) }}">{{ supplierOffer.supplier.name }}</a>
+                    </td>
+                <tr>
+                <tr>
+                    <td>
+                        Product Title
+                    </td>
+                    <td>
+                        {{ supplierOffer.productTitle }}
+                    </td>
+                <tr>
+                <tr>
+                    <td>
+                        Description
+                    </td>
+                    <td>
+                        {{ supplierOffer.productDescription }}
+                    </td>
+                <tr>
+                <tr>
+                    <td>
+                        PurchasePrice
+                    </td>
+                    <td>
+                        {{ supplierOffer.PurchasePrice }}
+                    </td>
+                <tr>
+                <tr>
+                    <td>
+                        leadTimeDays
+                    </td>
+                    <td>
+                        {{ supplierOffer.leadTimeDays }}
+                    </td>
+                <tr>
+                <tr>
+                    <td>
+                        Purchase Price Valid Until
+                    </td>
+                    <td>
+                        {{ supplierOffer.PurchasePriceValidUntil ? supplierOffer.PurchasePriceValidUntil|date('Y-m-d H:i') : '—' }}
+                    </td>
+                <tr>
+                <tr>
+                    <td>
+                        Linked Product
+                    </td>
+                    <td>
+                        <a href="{{ path('app_admin_product_show', {id: supplierOffer.product.id }) }}">{{ supplierOffer.product.name }}</a>
+
+                    </td>
+                <tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
