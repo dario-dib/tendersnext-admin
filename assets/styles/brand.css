@@ -1,19 +1,14 @@
-/* Global theme color */
-:root {
-    --bs-primary: #0ea5e9;
-    --bs-primary-rgb: 14,165,233;
-    --bs-link-color: var(--bs-primary);
-    --bs-link-hover-color: color-mix(in srgb, var(--bs-primary), black 15%);
+:root,
+[data-bs-theme="light"],
+[data-bs-theme="dark"] {
+    --tblr-primary: #0ea5e9;
+    --tblr-primary-rgb: 14,165,233; /* R,G,B (no spaces) */
+    --tblr-primary-fg: #ffffff;
 }
 
-/* Make Bootstrap's primary button follow your brand color */
-.btn-primary {
-    --bs-btn-bg: var(--bs-primary);
-    --bs-btn-border-color: var(--bs-primary);
-    --bs-btn-hover-bg: color-mix(in srgb, var(--bs-primary), black 10%);
-    --bs-btn-hover-border-color: color-mix(in srgb, var(--bs-primary), black 12%);
-    --bs-btn-active-bg: color-mix(in srgb, var(--bs-primary), black 15%);
-    --bs-btn-active-border-color: color-mix(in srgb, var(--bs-primary), black 20%);
-    --bs-btn-disabled-bg: var(--bs-primary);
-    --bs-btn-disabled-border-color: var(--bs-primary);
+:root,
+[data-bs-theme="light"],
+[data-bs-theme="dark"] {
+    --tblr-link-color: var(--tblr-primary);
+    --tblr-link-hover-color: rgba(var(--tblr-primary-rgb), .85);
 }

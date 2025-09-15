@@ -1,0 +1,6 @@
+sylius_twig_hooks:
+    hooks:
+        'sylius_admin.base#stylesheets':
+            admin_brand:
+                priority: -1000
+                template: 'admin/_base_importmap.html.twig'
